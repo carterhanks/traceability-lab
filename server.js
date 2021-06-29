@@ -12,6 +12,6 @@ app.get('/', function(req, res) {
 
 const port = process.env.PORT || 4545;
 
-app.listen(port, funciton () {
+app.listen(port, function() {
     console.log(`Server slappin on ${port}`);
 });

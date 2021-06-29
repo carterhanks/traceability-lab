@@ -16,15 +16,13 @@ app.use('/styles.css', express.static(path.join(__dirname, 'public/styles.css'))
 app.get('/', function(req, res) {
     // record a generic message and send it to Rollbar
     rollbar.log("Hello world!");
+    try {
+        fakeFunction();
+    } catch (err) {
+        rollbar.error(err);
+        return res.sendStatus(400);
+    };
     res.sendFile(path.join(__dirname, '/public/index.html'));
-});
-
-app.get('/', function() {
-    getQuerySubmit.addEventListener('click', () => {
-        axios
-            .get(http://localhost:5050/api/inventory?item=${queryInput.value})
-            .then(res => addToView(res.data))
-    });
 });
 
 const port = process.env.PORT || 4545;

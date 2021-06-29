@@ -9,12 +9,13 @@ const rollbar = new Rollbar({
   captureUnhandledRejections: true
 });
 
-// record a generic message and send it to Rollbar
-rollbar.log("Hello world!");
-
 app.use(express.json());
 
+app.use('/styles.css', express.static(path.join(__dirname, 'public/styles.css')));
+
 app.get('/', function(req, res) {
+    // record a generic message and send it to Rollbar
+    rollbar.log("Hello world!");
     res.sendFile(path.join(__dirname, '/public/index.html'));
 });
 

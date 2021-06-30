@@ -10,5 +10,24 @@
 </head>
 <body>
     <h1>Hello World!</h1>
+
+    <section>
+        <button id="puppyBtn">Click for Puppies</button>
+    </section>
+
+
+     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      document.getElementById("puppyBtn").onclick = function () {
+        axios.get("http:localhost:4545/api/puppies/")
+        .then(function (response) {
+          const data = response.data;
+          window.open(data);
+        });
+    };
+    </script>
+
+
 </body>
+<script src="/server.js"></script>
 </html>
